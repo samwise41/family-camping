@@ -40,6 +40,7 @@
 
     .table-wrap { overflow-x: auto; }
     table { border-collapse: collapse; font-size: 0.82rem; white-space: nowrap; width: 100%; }
+    table.compact { width: auto; }
     th { background: #f0f0f0; padding: 6px 10px; text-align: center;
          border: 1px solid #ddd; position: sticky; top: 0; z-index: 1; }
     td { padding: 5px 8px; border: 1px solid #e5e5e5; text-align: center; }
@@ -237,6 +238,9 @@
     const hide = document.getElementById('pairsOnly').checked;
     document.querySelectorAll('.site-data').forEach(el => {
       el.style.display = hide ? 'none' : '';
+    });
+    document.querySelectorAll('.tab-panel table').forEach(t => {
+      t.classList.toggle('compact', hide);
     });
   }
 
