@@ -39,15 +39,15 @@
                   border-radius: 4px; font-size: 0.82rem; font-weight: 600; }
 
     .table-wrap { overflow-x: auto; }
-    table { border-collapse: collapse; font-size: 0.82rem; white-space: nowrap; width: 100%; }
-    table.compact { width: auto; }
+    table { border-collapse: collapse; font-size: 0.82rem; white-space: nowrap; table-layout: fixed; }
     th { background: #f0f0f0; padding: 6px 10px; text-align: center;
          border: 1px solid #ddd; position: sticky; top: 0; z-index: 1; }
     td { padding: 5px 8px; border: 1px solid #e5e5e5; text-align: center; }
-    .weekend-col { text-align: left; font-weight: 500; min-width: 110px; }
-    .pair-col { background: #f0f9ff; font-weight: 600; min-width: 90px; }
-    .pref-col { background: #fefce8; min-width: 40px; }
-    .site-col { min-width: 35px; }
+    .weekend-col { text-align: left; font-weight: 500; width: 110px; }
+    .blackout-col { width: 170px; }
+    .pair-col { background: #f0f9ff; font-weight: 600; width: 100px; }
+    .pref-col { background: #fefce8; width: 42px; }
+    .site-col { width: 38px; }
     .bo-cell { font-size: 0.75rem; color: #92400e; }
 
     .blackout-row td { background: #fafafa; color: #999; }
@@ -190,7 +190,7 @@
       <div class="table-wrap">
         <table>
           <thead><tr>
-            <th>Weekend</th><th>Blackout</th>${pairThs}${siteThs}
+            <th class="weekend-col">Weekend</th><th class="blackout-col">Blackout</th>${pairThs}${siteThs}
           </tr></thead>
           <tbody>${rows}</tbody>
         </table>
@@ -238,9 +238,6 @@
     const hide = document.getElementById('pairsOnly').checked;
     document.querySelectorAll('.site-data').forEach(el => {
       el.style.display = hide ? 'none' : '';
-    });
-    document.querySelectorAll('.tab-panel table').forEach(t => {
-      t.classList.toggle('compact', hide);
     });
   }
 
